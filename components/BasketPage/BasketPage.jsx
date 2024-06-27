@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import TitleText from '../TitleText/TitleText';
 import RobotoText from '../RobotoText/RobotoText';
@@ -17,7 +17,7 @@ export default function BasketPage({ navigation }) {
           <Image source={require('../../assets/images/ArrowBackGray.png')} />
         </TouchableOpacity>
         <TitleText color="#403937" size={16} weight="bold">
-          Trolley
+          Корзина
         </TitleText>
       </View>
       {selectedCoffee.map((elem, index) => {
@@ -26,10 +26,10 @@ export default function BasketPage({ navigation }) {
       <View style={styles.footer}>
         <View style={styles.total}>
           <RobotoText size={16} color="#403937">
-            Total
+            Всего
           </RobotoText>
           <TitleText size={20} color="#403937" weight="bold">
-            {totalPrice}$
+            {totalPrice}₽
           </TitleText>
         </View>
         <TouchableOpacity
@@ -37,7 +37,7 @@ export default function BasketPage({ navigation }) {
           onPress={() => navigation.navigate('Delivery')}
         >
           <RobotoText size={14} weight="bold" color="#FFFFFF">
-            CONFIRM ORDER
+            Подтвердить заказ
           </RobotoText>
         </TouchableOpacity>
       </View>
@@ -47,6 +47,7 @@ export default function BasketPage({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     flex: 1,
     backgroundColor: '#FAFAFA',
     alignItems: 'center',

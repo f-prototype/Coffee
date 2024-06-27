@@ -16,12 +16,12 @@ export default function TralleyListElem({ elem, code }) {
               {elem.name}
             </RobotoText>
             <RobotoText size={14} color="#8D8686">
-              {elem.size}ml
+              {elem.size} мл
             </RobotoText>
           </View>
           <View style={styles.priceBox}>
             <TitleText size={16} weight="bold" color="#272221">
-              {elem.totalValue}$
+              {elem.totalValue}₽
             </TitleText>
           </View>
         </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
@@ -29,7 +29,7 @@ export default function RobotoText(props) {
     textTransform: transform ? transform : '',
   };
   return (
-    <Text style={style} onLayout={onLayoutRootView} {...other}>
+    <Text style={{ ...style, ...other }} onLayout={onLayoutRootView}>
       {props.children}
     </Text>
   );

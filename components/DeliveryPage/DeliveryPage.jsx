@@ -7,17 +7,20 @@ export const DeliveryPage = ({ navigation }) => {
     <View style={styles.container}>
       <Image source={require('../../assets/images/Delivery.png')} />
       <TitleText size={24} weight="bold" color="#C47F17">
-        Uhu! Order confirmed
+        Уху! Заказ подтвержден
       </TitleText>
-      <RobotoText size={14} color="#403937">
-        Now all you have to do is wait for the coffee to arrive!
+      <TitleText size={20} weight="bold" color="#C47F17" marginTop={6}>
+        Номер заказа: 2203
+      </TitleText>
+      <RobotoText size={14} color="#403937" textAlign="center" marginTop={12}>
+        {'Теперь вам остается только ждать, \n когда приготовят кофе!'}
       </RobotoText>
       <TouchableOpacity
         style={styles.btn}
         onPress={() => navigation.navigate('Feed')}
       >
         <RobotoText size={14} weight="bold" color="#FFFFFF">
-          GO HOME
+          НА ГЛАВНУЮ
         </RobotoText>
       </TouchableOpacity>
     </View>

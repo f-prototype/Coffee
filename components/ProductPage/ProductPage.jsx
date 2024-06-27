@@ -13,52 +13,54 @@ export default function ProductPage({ route, navigation }) {
   return (
     // Содержит графную информацию о выбранном кофе и контейнер с выбором размера и количества
     <ScrollView style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={{ padding: 26, paddingLeft: 32 }}
-      >
-        <Image source={require('../../assets/images/BackArrow.png')} />
-      </TouchableOpacity>
-      <View style={styles.mainInfoBox}>
-        <View style={styles.mainInfo}>
-          <View style={styles.info}>
-            <View style={styles.category}>
-              <RobotoText
-                size={10}
-                weight="bold"
-                color="#FFFFFF"
-                transform="uppercase"
-              >
-                {route.params.item.category}
-              </RobotoText>
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ padding: 26, paddingLeft: 32 }}
+        >
+          <Image source={require('../../assets/images/BackArrow.png')} />
+        </TouchableOpacity>
+        <View style={styles.mainInfoBox}>
+          <View style={styles.mainInfo}>
+            <View style={styles.info}>
+              <View style={styles.category}>
+                <RobotoText
+                  size={10}
+                  weight="bold"
+                  color="#FFFFFF"
+                  transform="uppercase"
+                >
+                  {route.params.item.category}
+                </RobotoText>
+              </View>
+              <TitleText size={24} weight="bold" color="#fff">
+                {route.params.item.name}
+              </TitleText>
             </View>
-            <TitleText size={24} weight="bold" color="#fff">
-              {route.params.item.name}
-            </TitleText>
+            <View style={styles.priceBox}>
+              <TitleText size={36} color="#DBAC2C" weight="bold" top={6}>
+                {route.params.item.price}₽
+              </TitleText>
+            </View>
           </View>
-          <View style={styles.priceBox}>
-            <TitleText size={36} color="#DBAC2C" weight="bold" top={6}>
-              {route.params.item.price}$
-            </TitleText>
+          <View>
+            <RobotoText
+              size={16}
+              color="#D7D5D5"
+              marginTop={20}
+              marginBottom={33}
+            >
+              {route.params.item.info}
+            </RobotoText>
           </View>
-        </View>
-        <View>
-          <RobotoText
-            size={16}
-            color="#D7D5D5"
-            marginTop={20}
-            marginBottom={33}
-          >
-            {route.params.item.info}
-          </RobotoText>
-        </View>
-        <View style={styles.cupOfCoffeeImg}>
-          <Image source={require('../../assets/images/CupOfCoffee.png')} />
+          <View style={styles.cupOfCoffeeImg}>
+            <Image source={require('../../assets/images/CupOfCoffee.png')} />
+          </View>
         </View>
       </View>
       <View style={styles.sizingBox}>
         <RobotoText size={14} color="#8D8686">
-          Select the size:
+          Выберите размер:
         </RobotoText>
         <View style={styles.sizing}>
           <Pressable
@@ -70,7 +72,7 @@ export default function ProductPage({ route, navigation }) {
               color={selectSize === 114 ? '#8047F8' : '#574F4D'}
               weight={selectSize === 114 ? 'bold' : ''}
             >
-              114ml
+              114 мл
             </RobotoText>
           </Pressable>
           <Pressable
@@ -82,7 +84,7 @@ export default function ProductPage({ route, navigation }) {
               color={selectSize === 140 ? '#8047F8' : '#574F4D'}
               weight={selectSize === 140 ? 'bold' : ''}
             >
-              140ml
+              140 мл
             </RobotoText>
           </Pressable>
           <Pressable
@@ -94,7 +96,7 @@ export default function ProductPage({ route, navigation }) {
               color={selectSize === 227 ? '#8047F8' : '#574F4D'}
               weight={selectSize === 227 ? 'bold' : ''}
             >
-              227ml
+              227 мл
             </RobotoText>
           </Pressable>
         </View>
@@ -123,7 +125,7 @@ export default function ProductPage({ route, navigation }) {
                   ...route.params.item,
                   amount: selectAmount,
                   size: selectSize,
-                  totalValue: 1.92 * selectAmount,
+                  totalValue: 250 * selectAmount,
                 })
               );
               setSelectAmount(1);
@@ -131,7 +133,7 @@ export default function ProductPage({ route, navigation }) {
             }}
           >
             <RobotoText size={14} weight="bold" color="#FFFFFF">
-              ADD
+              ДОБАВИТЬ
             </RobotoText>
           </TouchableOpacity>
         </View>
@@ -142,11 +144,14 @@ export default function ProductPage({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     backgroundColor: '#272221',
-    // padding: 32,
     paddingTop: 44,
+    flexDirection: 'column',
+    minHeight: '100%',
   },
+
   mainInfoBox: {
     marginTop: 12,
     paddingLeft: 32,
@@ -175,10 +180,11 @@ const styles = StyleSheet.create({
     bottom: -62,
   },
   sizingBox: {
+    flexGrow: 1,
     backgroundColor: '#FAFAFA',
     padding: 32,
     paddingTop: 42,
-    paddingBottom: 150,
+    paddingBottom: 100,
   },
   sizing: {
     flexDirection: 'row',

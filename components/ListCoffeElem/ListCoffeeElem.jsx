@@ -7,14 +7,14 @@ export default function ListCoffeeElem({ item }) {
     <View style={styles.container}>
       <Image source={item.src} style={styles.Image} />
       <View style={styles.info}>
-        <TitleText weight="bold" size={16} color="#403937">
+        <TitleText weight="bold" size={16} color="#403937" marginBottom={5}>
           {item.name}
         </TitleText>
         <RobotoText size={12} color="#8D8686">
           {item.info}
         </RobotoText>
         <TitleText size={20} weight="bold" color="#C47F17" marginTop={8}>
-          {item.price}$
+          {item.price}₽
         </TitleText>
       </View>
     </View>

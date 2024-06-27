@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 // Начальное значение
 const initialState = {
@@ -13,7 +13,8 @@ const basketSlice = createSlice({
   reducers: {
     calculateCost: (state) => {
       state.totalPrice = state.selectedCoffee.reduce(
-        (sum, current) => sum + current.price
+        (sum, current) => sum + current.totalValue,
+        0
       );
     },
 
@@ -41,7 +42,7 @@ const basketSlice = createSlice({
     deleteCoffee: (state, action) => {
       state.selectedCoffee = state.selectedCoffee.filter(
         (elem) =>
-          elem.name !== action.payload && elem.size !== action.payload.size
+          elem.name !== action.payload.name && elem.size !== action.payload.size
       );
       let total = 0;
       state.selectedCoffee.map((elem) => {
@@ -56,12 +57,12 @@ const basketSlice = createSlice({
       );
       if (action.payload.type === 'increment') {
         state.selectedCoffee[selectIndex].totalValue =
-          1.92 * (state.selectedCoffee[selectIndex].amount + 1);
+          250 * (state.selectedCoffee[selectIndex].amount + 1);
         state.selectedCoffee[selectIndex].amount =
           state.selectedCoffee[selectIndex].amount + 1;
       } else {
         state.selectedCoffee[selectIndex].totalValue =
-          1.92 * (state.selectedCoffee[selectIndex].amount - 1);
+          250 * (state.selectedCoffee[selectIndex].amount - 1);
         state.selectedCoffee[selectIndex].amount =
           state.selectedCoffee[selectIndex].amount - 1;
       }
@@ -74,7 +75,8 @@ const basketSlice = createSlice({
   },
 });
 
-export const { addCoffee, deleteCoffee, changeAmount } = basketSlice.actions;
+export const { addCoffee, deleteCoffee, changeAmount, calculateCost } =
+  basketSlice.actions;
 
 // По умолчанию экспортируется редьюсер, сгенерированный слайсом
 export default basketSlice.reducer;

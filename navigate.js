@@ -4,10 +4,11 @@ import BasketPage from './components/BasketPage/BasketPage';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import WelcomePage from './components/WelcomePage/WelcomePage';
+// import WelcomePage from './components/WelcomePage/WelcomePage';
 import { Ionicons } from '@expo/vector-icons';
 import ProductPage from './components/ProductPage/ProductPage';
 import { DeliveryPage } from './components/DeliveryPage/DeliveryPage';
+import { WelcomePage } from './components/WelcomePage/WelcomePage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

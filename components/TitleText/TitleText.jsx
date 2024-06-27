@@ -8,8 +8,9 @@ SplashScreen.preventAutoHideAsync();
 export default function TitleText(props) {
   const { size, weight, color, ...other } = props;
   const [fontsLoaded, fontError] = useFonts({
-    bl2: require('../../assets/fonts/Baloo2.ttf'),
-    'bl2-bold': require('../../assets/fonts/Baloo2-Bold.ttf'),
+    ping: require('../../assets/fonts/PingLCG-Regular.ttf'),
+    'ping-bold': require('../../assets/fonts/PingLCG-Bold.ttf'),
+    'ping-black': require('../../assets/fonts/PingLCG-Black.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -24,11 +25,16 @@ export default function TitleText(props) {
 
   const style = {
     fontSize: size || 15,
-    fontFamily: weight === 'bold' ? 'bl2-bold' : 'bl2',
+    fontFamily:
+      weight === 'bold'
+        ? 'ping-bold'
+        : weight === 'black'
+        ? 'ping-black'
+        : 'ping',
     color: color || 'black',
   };
   return (
-    <Text style={style} onLayout={onLayoutRootView} {...other}>
+    <Text style={{ ...style, ...other }} onLayout={onLayoutRootView} {...other}>
       {props.children}
     </Text>
   );
